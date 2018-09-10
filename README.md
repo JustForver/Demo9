@@ -9,7 +9,8 @@ app简要说明:
 1.底部导航栏使用第三方react-navigation组件中的{createBottomTabNavigator}实现，页面导航由{createStackNavigator}实现；  
 2.路线模块中的专线由ScrollView实现x轴滑动，数据通过fetch获取后端接口并将数据更新到state中，再由map将数据遍历显示出来；其中的线路由state中的数据源绑定到ListView中的dataSource中实现；  
 3.车票模块的二维码由QRCode实现（此模块为公司前辈所写，本人只会简单的使用）；  
-4.活动模块和路线模块大致相同，实现模式大同小异；
+4.活动模块和路线模块大致相同，实现模式大同小异； 
 5.我的模块的功能选项由ScrollView+TouchableHighlight实现最基本的页面显示，需要登录的部分由state中的isLogin控制；  
-6.页面导航均由this.props.navigation.navigate('your page name')或this.props.navigation.navigate('your page name'，{state:state})控制跳转。  
+6.页面导航均由this.props.navigation.navigate('your page name')或this.props.navigation.navigate('your page name'，{state:state})控制跳转。 
+
 
