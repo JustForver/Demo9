@@ -38,40 +38,10 @@ class SelectActivity extends Component {
         this.userTag = '';
     }
     componentWillMount(){
-
         //获取线路类型
         this.props.dispatch(fetchLineTypeList());
-        //触发版本更新Action
-        //actions.fetchVersionUpdate(Platform.OS);
         //获取活动类型
         this.props.dispatch(fetchActivityTypeList());
-        //获取包车页面车辆信息
-        //actions.fetchRentInfo();
-
-        /*db.loadById(key.ACCOUNT, "wxId",(ret)=> {
-                if (ret.wxUnionId !== null || ret.wxUnionId !== '') {
-                    this.userTag = ret.wxUnionId;
-                }
-            }, (error)=> {
-
-            }
-        );
-        db.loadById(key.ACCOUNT, "phone",(ret)=> {
-                if (ret.phone !== null || ret.phone !== '') {
-                    this.userTag = ret.phone;
-                }
-            }, (error)=> {
-
-            }
-        );
-        db.loadById(key.ACCOUNT, "token",(ret)=> {
-                if (ret.token !== null || ret.token !== '') {
-                    actions.fetchAutoLogin(this.userTag, ret.token);
-                }
-            }, (error)=> {
-
-            }
-        );*/
     }
 
     componentDidUpdate(){
@@ -95,105 +65,6 @@ class SelectActivity extends Component {
     }
 
     render() {
-        //得到app当前的版本号,并转换成3位长度的数组,如["1", "0", "0"] 分别对应主版本号、次版本号、修订版
-        //const nowVersion = packageVersion.split('.');
-        //const minVersion = LineReducer.minimum_version ? LineReducer.minimum_version.split('.') : null; //得到最低要求的版本号,并转换成3位长度的数组
-        //const newVersion = LineReducer.current_version ? LineReducer.current_version.split('.') : null; //得到最新要求的版本号,并转换成3位长度的数组
-        //const offVersion = LineReducer.off_versions; //得到所有需要下线的版本号的数组
-        //const updateUrls = LineReducer.update_urls ? LineReducer.update_urls[0].full_url : null;//得到最新版本的下载地址
-
-        /*const ifMinVersion = ()=> { //当前版本号是否低于最低版本号
-            if (nowVersion[0] < minVersion[0]) { //如果当前版本的主版本号小于最低要求版本的主版本号就返回true
-                return true;
-            } else if (nowVersion[0] === minVersion[0]) {
-                if (nowVersion[1] < minVersion[1]) { //如果当前版本的次版本号小于最低要求版本的次版本号就返回true
-                    return true;
-                } else if (nowVersion[1] === minVersion[1]) {
-                    if (nowVersion[2] < minVersion[2]) { //如果当前版本的修订版本号小于最低要求版本的修订版本号就返回true
-                        return true;
-                    } else if (nowVersion[2] === minVersion[2]) {
-                        return false;
-                    } else if (nowVersion[2] > minVersion[2]) {//如果当前版本的修订版本号大于最低要求版本的修订版本号就返回false
-                        return false;
-                    }
-                } else if (nowVersion[1] > minVersion[1]) {//如果当前版本的次版本号大于最低要求版本的次版本号就返回false
-                    return false;
-                }
-            } else if (nowVersion[0] > minVersion[0]) {//如果当前版本的主版本号大于最低要求版本的主版本号就返回false
-                return false;
-            }
-        };*/
-        /*const ifOffVersion = ()=> { //当前版本号是否是需要下线的版本
-            for (let i = 0; i < offVersion.length; i++) {
-                if (packageVersion === offVersion[i]) {
-                    return true;
-                }
-            }
-            return false; //for函数执行完成之后才会执行这句话。
-        };
-        const ifNewVersion = ()=> { //当前版本号是否大于等于最新版本号
-            if (nowVersion[0] > newVersion[0]) { //如果当前版本的主版本号大于最新版本的主版本号就返回true
-                return true;
-            } else if (nowVersion[0] === newVersion[0]) {
-                if (nowVersion[1] > newVersion[1]) { //如果当前版本的次版本号大于最新版本的次版本号就返回true
-                    return true;
-                } else if (nowVersion[1] === newVersion[1]) {
-                    if (nowVersion[2] > newVersion[2]) { //如果当前版本的修订版本号大于最新版本的修订版本号就返回true
-                        return true;
-                    } else if (nowVersion[2] === newVersion[2]) {
-                        return true;
-                    } else if (nowVersion[2] < newVersion[2]) {//如果当前版本的修订版本号小于最新版本的修订版本号就返回false
-                        return false;
-                    }
-                } else if (nowVersion[1] < newVersion[1]) {//如果当前版本的次版本号小于最新版本的次版本号就返回false
-                    return false;
-                }
-            } else if (nowVersion[0] < newVersion[0]) {//如果当前版本的主版本号小于最新版本的主版本号就返回false
-                return false;
-            }
-        };
-        if (updateUrls && this.status) { //当请求成功时判断
-            this.status = false;
-            if (ifMinVersion() || ifOffVersion()) { //如果当前版本低于最低要求版本或者是要回退的版本
-                //强制更新
-                Alert.alert(
-                    '',
-                    '请更新您的APP',
-                    [{
-                        text: '确定', onPress: () => {
-                            if (Platform.OS === 'ios') {
-                                Linking.openURL(updateUrls);
-                            } else {
-                                WebIntent.open(updateUrls);
-                            }
-                        }
-                    }]
-                );
-            } else if (ifNewVersion()) {
-            } else {
-                //提示更新
-                Alert.alert(
-                    '',
-                    '检测到新版本',
-                    [
-                        {
-                            text: '暂不更新', onPress: () => {
-                            }
-                        },
-                        {
-                            text: '立即更新', onPress: () => {
-                                if (Platform.OS === 'ios') {
-                                    Linking.openURL(updateUrls);
-                                } else {
-                                    WebIntent.open(updateUrls);
-                                }
-                            }
-                        }
-                    ]
-                );
-            }
-        }*/
-
         const {LineListReducer,LineReducer} = this.props;
         console.log(LineReducer.list);
         return (
